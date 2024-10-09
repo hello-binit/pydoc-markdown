@@ -31,7 +31,7 @@ import subprocess
 import typing as t
 from pathlib import Path
 
-import databind.core.annotations as A
+# import databind.core.annotations as A
 import databind.json
 import docspec
 import tomli
@@ -109,8 +109,8 @@ class PydocMarkdown:
         else:
             data = arg
 
-        unknown_keys = A.collect_unknowns()
-        result = databind.json.new_mapper().deserialize(data, type(self), filename=filename, settings=[unknown_keys()])  # type: ignore[arg-type]  # noqa: E501  # Bad databind typehint
+        # unknown_keys = A.collect_unknowns()
+        result = databind.json.new_mapper().deserialize(data, type(self), filename=filename, settings=[])  # type: ignore[arg-type]  # noqa: E501  # Bad databind typehint
         vars(self).update(vars(result))
 
         for loc, keys in unknown_keys:
